@@ -4,6 +4,12 @@
  *
  * Copyright (c) 2012 Jean-Sébastien Ney
  * Licensed under the MIT license.
+ *
+ * Edited by Primož Bevk
+ * Added support for options.target file
+ * which allows to calculate the hash of the source file,
+ * and apply it as a filename to the target file
+ * useful for renaming Archives with hashes of its contents
  */
 
 /*global _:true, require:true*/
@@ -51,7 +57,8 @@ module.exports = function(grunt) {
 
           // keep extension unless you explicitly tell to not
           if (options.keepExtension !== false) {
-            ext = path.extname(srcFile);
+            //ext = path.extname(srcFile); !EDIT
+			ext = path.extname(options.target);
           }
 
           // keep basename unless you explicitly tell to not
@@ -61,7 +68,7 @@ module.exports = function(grunt) {
 
           filename = basename +
             require('crypto').
-            createHash('md5').
+            createHash(options.algorithm).
             update(srcCode, options.encoding).
             digest('hex') + ext;
 
@@ -71,7 +78,8 @@ module.exports = function(grunt) {
           } else {
             destFile = filePair.dest.replace(regex, filename);
           }
-          grunt.file.copy(srcFile, destFile);
+          //grunt.file.copy(srcFile, destFile); !EDIT
+		  grunt.file.copy(options.target, destFile);
 
           currentFile = {
             newPath: destFile,
@@ -125,4 +133,3 @@ module.exports = function(grunt) {
     return s.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
   };
 };
-
