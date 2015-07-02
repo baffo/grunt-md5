@@ -73,6 +73,7 @@ grunt.initConfig({
 [getting_started]: https://github.com/cowboy/grunt/blob/master/docs/getting_started.md
 
 ## Release History
+* 0.1.12 support for calculating hash from one file and applying the hash filename to another; reenabled options.algorythm
 * 0.1.10 Supporting binary encoded files
 * 0.1.9  Changing `after` and `afterEach` signature, added `options` argument, plus context
 * 0.1.8  Encoding option, enhancements in directories management
