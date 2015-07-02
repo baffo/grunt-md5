@@ -1,10 +1,10 @@
 {
-  "name": "grunt-md5",
+  "name": "grunt-md5-sha1",
   "description": "generate md5/sha1/.. filename",
   "version": "0.1.12",
   "homepage": "https://github.com/baffo/grunt-md5",
   "author": {
-    "name": "Jean-Sébastien Ney, Primoz Bevk",
+    "name": "Jean-Sébastien Ney, Primoz Bevk"
   },
   "repository": {
     "type": "git",
